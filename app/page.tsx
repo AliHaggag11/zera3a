@@ -263,7 +263,6 @@ type AnimatedNumberProps = {
 };
 
 const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
-  const [value, setValue] = useState<number>(0);
   const valueRef = useRef<number>(0);
   const startTime = useRef<number | null>(null);
   const frameId = useRef<number | undefined>(undefined);
@@ -274,7 +273,6 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
       const progress = timestamp - startTime.current;
       const percentage = Math.min(progress / duration, 1);
       
-      // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
       valueRef.current = Math.floor(easeOutQuart * targetValue);
 
@@ -518,34 +516,6 @@ const PriceCard = ({ item, index }: { item: PriceItem; index: number }) => {
     </motion.div>
   );
 };
-
-// Add this with your other constants
-const additionalPrices = [
-  { 
-    name: { ar: "خيار", en: "Cucumber" },
-    price: { ar: "٦", en: "6" },
-    trend: "up",
-    unit: { ar: "جنيه/كجم", en: "EGP/kg" }
-  },
-  { 
-    name: { ar: "باذنجان", en: "Eggplant" },
-    price: { ar: "٩", en: "9" },
-    trend: "down",
-    unit: { ar: "جنيه/كجم", en: "EGP/kg" }
-  },
-  { 
-    name: { ar: "فلفل", en: "Bell Pepper" },
-    price: { ar: "١٢", en: "12" },
-    trend: "up",
-    unit: { ar: "جنيه/كجم", en: "EGP/kg" }
-  },
-  { 
-    name: { ar: "بصل", en: "Onions" },
-    price: { ar: "٥", en: "5" },
-    trend: "stable",
-    unit: { ar: "جنيه/كجم", en: "EGP/kg" }
-  }
-];
 
 export default function Home() {
   const { lang } = useLanguage();

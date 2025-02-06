@@ -615,7 +615,11 @@ export default function FeaturesPage() {
 
                 {/* Features List */}
                 <div className="space-y-6">
-                  {category.features.map((feature, featureIndex) => (
+                  {category.features.map((feature: { 
+                    title: { ar: string; en: string };
+                    description: { ar: string; en: string };
+                    icon: React.ReactNode;
+                  }, featureIndex: number) => (
                     <motion.div
                       key={featureIndex}
                       initial={{ opacity: 0, x: -20 }}
