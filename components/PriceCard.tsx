@@ -171,7 +171,7 @@ export default function PriceCard({ item, index = 0 }: PriceCardProps) {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Price Range
+              {lang === 'ar' ? 'نطاق السعر' : 'Price Range'}
             </span>
             <span className={`px-2 py-1 rounded-md text-xs font-medium 
               ${priceStatus.color} ${priceStatus.bgColor}`}
@@ -181,31 +181,26 @@ export default function PriceCard({ item, index = 0 }: PriceCardProps) {
           </div>
 
           <div className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            {/* Price bar - three segments */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-green-500" />
-            <div className="absolute inset-y-0 left-1/3 w-1/3 bg-yellow-500" />
-            <div className="absolute inset-y-0 left-2/3 w-1/3 bg-red-500" />
-            
-            {/* Price indicator */}
-            <motion.div
-              initial={{ x: '0%' }}
-              animate={{ 
-                x: `${((currentPrice - dailyStats.low) / (dailyStats.high - dailyStats.low)) * 100}%` 
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2"
-            >
-              <div className="w-3 h-3 bg-white dark:bg-gray-800 rounded-full shadow-lg 
-                border-2 border-gray-300 dark:border-gray-600"
-              />
-            </motion.div>
+            {/* Price range indicators */}
+            <div className="absolute inset-y-0 left-0 bg-green-500" 
+              style={{ width: `${((priceRange.min - dailyStats.low) / (dailyStats.high - dailyStats.low)) * 100}%` }} 
+            />
+            <div className="absolute inset-y-0 bg-yellow-500" 
+              style={{ 
+                left: `${((priceRange.min - dailyStats.low) / (dailyStats.high - dailyStats.low)) * 100}%`,
+                width: `${((priceRange.max - priceRange.min) / (dailyStats.high - dailyStats.low)) * 100}%` 
+              }} 
+            />
+            <div className="absolute inset-y-0 right-0 bg-red-500" 
+              style={{ width: `${((dailyStats.high - priceRange.max) / (dailyStats.high - dailyStats.low)) * 100}%` }} 
+            />
           </div>
 
           {/* Price labels */}
           <div className="flex justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">
-            <span>{dailyStats.low.toFixed(2)}</span>
-            <span>{currentPrice.toFixed(2)}</span>
-            <span>{dailyStats.high.toFixed(2)}</span>
+            <span>{priceRange.min.toFixed(2)}</span>
+            <span>{priceRange.average.toFixed(2)}</span>
+            <span>{priceRange.max.toFixed(2)}</span>
           </div>
         </div>
 

@@ -263,6 +263,7 @@ type AnimatedNumberProps = {
 };
 
 const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
+  const [value, setValue] = useState<number>(0);
   const valueRef = useRef<number>(0);
   const startTime = useRef<number | null>(null);
   const frameId = useRef<number | undefined>(undefined);
@@ -549,31 +550,22 @@ const additionalPrices = [
 export default function Home() {
   const { lang } = useLanguage();
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(0);
-  const [showMore, setShowMore] = useState<boolean>(false);
   const [prices, setPrices] = useState<typeof translations.prices.items>(translations.prices.items);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCardIndex((prev) => (prev + 1) % heroCards.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    // Initial prices without currentPrice
-    const initialPrices = translations.prices.items.map(item => ({
+    // Initial prices with proper typing
+    const initialPrices: typeof translations.prices.items = translations.prices.items.map(item => ({
       ...item,
       trend: Math.random() > 0.5 ? "up" : "down"
     }));
     setPrices(initialPrices);
 
-    // Update prices every 5 seconds
+    // Update prices every 5 seconds with proper typing
     const interval = setInterval(() => {
-      setPrices(currentPrices => 
-        currentPrices.map(item => {
+      setPrices((currentPrices: typeof translations.prices.items) => 
+        currentPrices.map((item: typeof translations.prices.items[0]) => {
           const currentValue = parseFloat(item.price[lang]);
           const change = (Math.random() - 0.5) * 2;
           const newPrice = Math.max(1, currentValue + change);
@@ -591,6 +583,14 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [lang]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCardIndex((prev) => (prev + 1) % heroCards.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={`min-h-screen relative bg-[#f8f9fa] dark:bg-gray-900 overflow-x-hidden ${
@@ -971,12 +971,7 @@ export default function Home() {
                 >
                   <span className="flex items-center gap-2">
                     {translations.prices.viewMore[lang]}
-                    <motion.div
-                      animate={{ rotate: showMore ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-5 h-5" />
-          </motion.div>
+                    <ChevronDown className="w-5 h-5" />
                   </span>
                 </motion.button>
               </motion.div>

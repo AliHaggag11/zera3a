@@ -12,7 +12,6 @@ import {
   Mic,
   Smartphone,
   HandshakeIcon,
-  ArrowRight,
   Shield,
   Bell,
   LineChart,
@@ -20,15 +19,14 @@ import {
   Zap,
   Map,
   MessageCircle,
-  MessageSquare,
-  Settings,
-  Wallet,
   Share2,
   User2,
   Check,
   ChevronDown,
   ChevronUp,
-  HelpCircle
+  HelpCircle,
+  Settings,
+  Wallet
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
