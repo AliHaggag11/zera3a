@@ -56,49 +56,49 @@ const translations = {
   },
   stats: {
     activeUsers: {
-      number: { ar: "١٠٠٠+", en: "1000+" },
-      label: { ar: "مزارع نشط", en: "Active Farmers" }
+      number: { ar: '١٠٠٠+', en: '1000+' },
+      label: { ar: 'مزارع نشط', en: 'Active Farmers' }
     },
     markets: {
-      number: { ar: "٥٠+", en: "50+" },
-      label: { ar: "سوق محلي", en: "Local Markets" }
+      number: { ar: '٥٠+', en: '50+' },
+      label: { ar: 'سوق محلي', en: 'Local Markets' }
     },
     satisfaction: {
-      number: { ar: "٩٥٪", en: "95%" },
-      label: { ar: "رضا العملاء", en: "Customer Satisfaction" }
+      number: { ar: '٩٥٪', en: '95%' },
+      label: { ar: 'رضا العملاء', en: 'Customer Satisfaction' }
     }
   },
   prices: {
-    title: { ar: "أسعار اليوم", en: "Today's Prices" },
+    title: { ar: 'أسعار اليوم', en: 'Today\'s Prices' },
     items: [
       { 
-        name: { ar: "طماطم", en: "Tomatoes" },
-        price: { ar: "٨", en: "8" },
-        trend: "up",
-        unit: { ar: "جنيه/كجم", en: "EGP/kg" }
+        name: { ar: 'طماطم', en: 'Tomatoes' },
+        price: { ar: '٨', en: '8' },
+        trend: 'up',
+        unit: { ar: 'جنيه/كجم', en: 'EGP/kg' }
       },
       { 
-        name: { ar: "بطاطس", en: "Potatoes" },
-        price: { ar: "١٠", en: "10" },
-        trend: "down",
-        unit: { ar: "جنيه/كجم", en: "EGP/kg" }
+        name: { ar: 'بطاطس', en: 'Potatoes' },
+        price: { ar: '١٠', en: '10' },
+        trend: 'down',
+        unit: { ar: 'جنيه/كجم', en: 'EGP/kg' }
       },
       { 
-        name: { ar: "برتقال", en: "Oranges" },
-        price: { ar: "١٥", en: "15" },
-        trend: "up",
-        unit: { ar: "جنيه/كجم", en: "EGP/kg" }
+        name: { ar: 'برتقال', en: 'Oranges' },
+        price: { ar: '١٥', en: '15' },
+        trend: 'up',
+        unit: { ar: 'جنيه/كجم', en: 'EGP/kg' }
       },
       { 
-        name: { ar: "ذرة", en: "Corn" },
-        price: { ar: "٧", en: "7" },
-        trend: "down",
-        unit: { ar: "جنيه/كجم", en: "EGP/kg" }
+        name: { ar: 'ذرة', en: 'Corn' },
+        price: { ar: '٧', en: '7' },
+        trend: 'down',
+        unit: { ar: 'جنيه/كجم', en: 'EGP/kg' }
       }
     ],
     viewMore: {
-      ar: "عرض المزيد",
-      en: "View More"
+      ar: 'عرض المزيد',
+      en: 'View More'
     }
   },
   cta: {
@@ -597,8 +597,8 @@ export default function Home() {
       <section id="home" className="relative w-full min-h-[calc(100vh-4rem)] pt-24 pb-16">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12 h-full">
-          <motion.div
-            {...fadeInUp}
+            <motion.div
+              {...fadeInUp}
               className="flex-1 text-center md:text-left"
             >
               <div className="inline-block mb-4 px-4 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
