@@ -263,9 +263,9 @@ type AnimatedNumberProps = {
 };
 
 const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
-  const [current, setCurrent] = useState(0);
+  const valueRef = useRef<number>(0);
   const startTime = useRef<number | null>(null);
-  const frameId = useRef<number>();
+  const frameId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const animate = (timestamp: number) => {
@@ -275,14 +275,16 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
       
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-      setCurrent(Math.floor(easeOutQuart * targetValue));
+      valueRef.current = Math.floor(easeOutQuart * targetValue);
 
       if (percentage < 1) {
         frameId.current = requestAnimationFrame(animate);
       }
     };
 
+    startTime.current = null;
     frameId.current = requestAnimationFrame(animate);
+
     return () => {
       if (frameId.current) {
         cancelAnimationFrame(frameId.current);
@@ -290,7 +292,7 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
     };
   }, [targetValue, duration]);
 
-  return current;
+  return valueRef.current;
 };
 
 // Add this new component
@@ -546,10 +548,10 @@ const additionalPrices = [
 
 export default function Home() {
   const { lang } = useLanguage();
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [currentCardIndex, setCurrentCardIndex] = useState<number>(0);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const [prices, setPrices] = useState(translations.prices.items);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [prices, setPrices] = useState<typeof translations.prices.items>(translations.prices.items);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -561,31 +563,34 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Initial random prices
+    // Initial prices without currentPrice
     const initialPrices = translations.prices.items.map(item => ({
       ...item,
-      currentPrice: parseFloat(item.price[lang]),
       trend: Math.random() > 0.5 ? "up" : "down"
     }));
     setPrices(initialPrices);
 
-    // Update prices every 5 seconds instead of every render
+    // Update prices every 5 seconds
     const interval = setInterval(() => {
       setPrices(currentPrices => 
         currentPrices.map(item => {
-          const change = (Math.random() - 0.5) * 2; // Random price change
-          const newPrice = Math.max(1, item.currentPrice + change);
+          const currentValue = parseFloat(item.price[lang]);
+          const change = (Math.random() - 0.5) * 2;
+          const newPrice = Math.max(1, currentValue + change);
           return {
             ...item,
-            currentPrice: Number(newPrice.toFixed(2)),
+            price: {
+              ar: newPrice.toFixed(2),
+              en: newPrice.toFixed(2)
+            },
             trend: change >= 0 ? "up" : "down"
           };
         })
       );
-    }, 5000); // Changed from 1000 to 5000 milliseconds
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [lang]); // Only depend on language changes
+  }, [lang]);
 
   return (
     <div className={`min-h-screen relative bg-[#f8f9fa] dark:bg-gray-900 overflow-x-hidden ${
@@ -1205,7 +1210,8 @@ export default function Home() {
                   
                   {/* Learn More Link */}
                   <div className="mt-6 flex items-center gap-2 text-[#3A8B50] dark:text-green-500 
-                    group-hover:gap-3 transition-all duration-300"
+                    group-hover:gap-3 transition-all duration-300 cursor-pointer"
+                    onClick={() => router.push('/features')}
                   >
                     <span className="text-sm font-medium">
                       {lang === 'ar' ? 'اكتشف المزيد' : 'Learn More'}
