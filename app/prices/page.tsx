@@ -47,7 +47,7 @@ const allCropsData = [
   { 
     name: { ar: "طماطم", en: "Tomatoes" }, 
     price: { ar: "٨", en: "8" }, 
-    trend: "up", 
+    trend: "up" as const, 
     unit: { ar: "جنيه/كجم", en: "EGP/kg" }, 
     season: "nili", 
     category: "vegetables",
@@ -61,35 +61,35 @@ const allCropsData = [
   { 
     name: { ar: "بطاطس", en: "Potatoes" }, 
     price: { ar: "١٠", en: "10" }, 
-    trend: "down", 
+    trend: "down" as const, 
     unit: { ar: "جنيه/كجم", en: "EGP/kg" }, 
     season: "nili", 
     category: "vegetables",
     updatedAt: new Date('2024-03-10T09:30:00').getTime()
   },
-  { name: { ar: "خيار", en: "Cucumber" }, price: { ar: "٦", en: "6" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "باذنجان", en: "Eggplant" }, price: { ar: "٩", en: "9" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "فلفل", en: "Bell Peppers" }, price: { ar: "١٢", en: "12" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "كوسة", en: "Zucchini" }, price: { ar: "٧", en: "7" }, trend: "stable", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "بصل", en: "Onions" }, price: { ar: "٥", en: "5" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "ثوم", en: "Garlic" }, price: { ar: "٢٥", en: "25" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "جزر", en: "Carrots" }, price: { ar: "٦", en: "6" }, trend: "stable", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "خيار", en: "Cucumber" }, price: { ar: "٦", en: "6" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "باذنجان", en: "Eggplant" }, price: { ar: "٩", en: "9" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "فلفل", en: "Bell Peppers" }, price: { ar: "١٢", en: "12" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "كوسة", en: "Zucchini" }, price: { ar: "٧", en: "7" }, trend: "stable" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "بصل", en: "Onions" }, price: { ar: "٥", en: "5" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "ثوم", en: "Garlic" }, price: { ar: "٢٥", en: "25" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "جزر", en: "Carrots" }, price: { ar: "٦", en: "6" }, trend: "stable" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "vegetables", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
   
   // Fruits
-  { name: { ar: "برتقال", en: "Oranges" }, price: { ar: "١٥", en: "15" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "عنب", en: "Grapes" }, price: { ar: "٢٠", en: "20" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "مانجو", en: "Mangoes" }, price: { ar: "٣٠", en: "30" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "موز", en: "Bananas" }, price: { ar: "١٨", en: "18" }, trend: "stable", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "تفاح", en: "Apples" }, price: { ar: "٢٥", en: "25" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "فراولة", en: "Strawberries" }, price: { ar: "٢٢", en: "22" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "برتقال", en: "Oranges" }, price: { ar: "١٥", en: "15" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "عنب", en: "Grapes" }, price: { ar: "٢٠", en: "20" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "مانجو", en: "Mangoes" }, price: { ar: "٣٠", en: "30" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "موز", en: "Bananas" }, price: { ar: "١٨", en: "18" }, trend: "stable" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "تفاح", en: "Apples" }, price: { ar: "٢٥", en: "25" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "فراولة", en: "Strawberries" }, price: { ar: "٢٢", en: "22" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "fruits", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
   
   // Grains
-  { name: { ar: "قمح", en: "Wheat" }, price: { ar: "١٢", en: "12" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "ذرة", en: "Corn" }, price: { ar: "٧", en: "7" }, trend: "stable", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "شعير", en: "Barley" }, price: { ar: "٩", en: "9" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "أرز", en: "Rice" }, price: { ar: "١٤", en: "14" }, trend: "up", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "فول", en: "Fava Beans" }, price: { ar: "١٦", en: "16" }, trend: "stable", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
-  { name: { ar: "عدس", en: "Lentils" }, price: { ar: "٢٠", en: "20" }, trend: "down", unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() }
+  { name: { ar: "قمح", en: "Wheat" }, price: { ar: "١٢", en: "12" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "ذرة", en: "Corn" }, price: { ar: "٧", en: "7" }, trend: "stable" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "شعير", en: "Barley" }, price: { ar: "٩", en: "9" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "أرز", en: "Rice" }, price: { ar: "١٤", en: "14" }, trend: "up" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "summer", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "فول", en: "Fava Beans" }, price: { ar: "١٦", en: "16" }, trend: "stable" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() },
+  { name: { ar: "عدس", en: "Lentils" }, price: { ar: "٢٠", en: "20" }, trend: "down" as const, unit: { ar: "جنيه/كجم", en: "EGP/kg" }, season: "winter", category: "grains", updatedAt: new Date('2024-03-10T10:00:00').getTime() }
 ];
 
 export default function PricesPage() {
@@ -351,7 +351,6 @@ export default function PricesPage() {
             {filteredPrices.map((item, index) => (
               <PriceCard
                 key={item.name.en}
-                index={index}
                 item={item}
               />
             ))}

@@ -2,13 +2,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { useState, useRef } from "react";
 
-type VideoModalProps = {
+interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  videoUrl: string;
-};
+}
 
-export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProps) {
+const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -120,4 +119,6 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
       )}
     </AnimatePresence>
   );
-} 
+};
+
+export default VideoModal; 

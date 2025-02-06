@@ -44,10 +44,10 @@ type PriceCardProps = {
     icon?: React.ReactNode;
     priceRange?: PriceRange;
   };
-  index: number;
+  index?: number;
 };
 
-export default function PriceCard({ item, index }: PriceCardProps) {
+export default function PriceCard({ item, index = 0 }: PriceCardProps) {
   const { lang } = useLanguage();
   const [isUpdating, setIsUpdating] = useState(false);
   const [currentPrice, setCurrentPrice] = useState(item.price);

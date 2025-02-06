@@ -2,8 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Check, ChevronDown, Shield, ArrowLeft } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Check, ChevronDown, Shield } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useRouter } from 'next/navigation';
 

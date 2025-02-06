@@ -778,13 +778,13 @@ export default function FeaturesPage() {
                   {/* Quote */}
                   <div className="relative mb-8 mt-4">
                     <div className="absolute -top-6 -left-2 text-[#3A8B50] opacity-10 text-6xl font-serif">
-                      "
+                      &ldquo;
                     </div>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                       {testimonial.quote[lang]}
                     </p>
                     <div className="absolute -bottom-4 -right-2 text-[#3A8B50] opacity-10 text-6xl font-serif rotate-180">
-                      "
+                      &ldquo;
                     </div>
                   </div>
 

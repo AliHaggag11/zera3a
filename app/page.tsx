@@ -1757,7 +1757,6 @@ export default function Home() {
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
-        videoUrl="/your-video-url.mp4" // Replace with your actual video URL
       />
     </div>
   );
