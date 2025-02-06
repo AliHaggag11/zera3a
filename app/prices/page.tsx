@@ -126,7 +126,7 @@ export default function PricesPage() {
       }
     })
     // Finally map the sorted data to PriceCard props
-    .map(item => ({
+    .map((item, index) => ({
       ...item,
       price: Number(item.price[lang]),
       previousPrice: Number(item.price[lang]),

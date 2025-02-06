@@ -37,3 +37,7 @@ body {
 .font-\[Afacad\] {
   font-family: var(--font-afacad);
 }
+
+.bg-grid {
+  background-image: url('/grid.svg');
+}
