@@ -42,16 +42,16 @@ const fadeInUp = {
 const translations = {
   hero: {
     title: {
-      ar: `بيع محاصيلك بأسعار أفضل`,
-      en: `Sell Your Crops at Better Prices`
+      ar: 'بيع محاصيلك بأسعار أفضل',
+      en: 'Sell Your Crops at Better Prices'
     },
     subtitle: {
-      ar: `من غير ما تروح للسوق!`,
-      en: `Without Going to the Market!`
+      ar: 'من غير ما تروح للسوق!',
+      en: 'Without Going to the Market!'
     },
     watchVideo: {
-      ar: "شاهد كيف يمكنك زيادة أرباحك",
-      en: "Watch How to Increase Your Profits"
+      ar: 'شاهد كيف يمكنك زيادة أرباحك',
+      en: 'Watch How to Increase Your Profits'
     }
   },
   stats: {
