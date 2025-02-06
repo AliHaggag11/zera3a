@@ -263,6 +263,7 @@ type AnimatedNumberProps = {
 };
 
 const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
+  const [value, setValue] = useState<number>(0);
   const valueRef = useRef<number>(0);
   const startTime = useRef<number | null>(null);
   const frameId = useRef<number | undefined>(undefined);
@@ -272,8 +273,8 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
       if (!startTime.current) startTime.current = timestamp;
       const progress = timestamp - startTime.current;
       const percentage = Math.min(progress / duration, 1);
-      const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-      valueRef.current = Math.floor(easeOutQuart * targetValue);
+      valueRef.current = Math.floor(percentage * targetValue);
+      setValue(valueRef.current);
 
       if (percentage < 1) {
         frameId.current = requestAnimationFrame(animate);
@@ -290,7 +291,7 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
     };
   }, [targetValue, duration]);
 
-  return valueRef.current;
+  return value;
 };
 
 // Add this new component
