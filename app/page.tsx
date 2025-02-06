@@ -1318,411 +1318,412 @@ export default function Home() {
         className="relative w-full py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02]" />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" />
+          <div className="absolute inset-0 bg-[url(%27/grid.svg%27)] opacity-[0.02]" />
           <motion.div
             animate={{
               backgroundPosition: ['0px 0px', '100px 100px'],
               transition: { duration: 20, repeat: Infinity, ease: 'linear' }
             }}
-            className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.15]"
+            className="absolute inset-0 bg-[url(%27/noise.png%27)] opacity-[0.15]"
           />
         </div>
 
         <div className="relative max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-24">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+              bg-[#3A8B50]/5 dark:bg-gray-800/60 mb-6 backdrop-blur-sm"
+          >
             <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 rounded-full bg-[#3A8B50]"
+            />
+            <span className="text-sm font-medium bg-gradient-to-r from-[#3A8B50] to-[#2d6e3e] 
+              dark:from-green-400 dark:to-green-500 bg-clip-text text-transparent">
+              {lang === 'ar' ? 'خطط مرنة' : 'Flexible Plans'}
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
+              dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent"
+          >
+            {translations.pricing.title[lang]}
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            {translations.pricing.subtitle[lang]}
+          </motion.p>
+        </div>
+
+        {/* Pricing Cards Container */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {translations.pricing.plans.map((plan, index) => (
+            <motion.div
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                bg-[#3A8B50]/5 dark:bg-gray-800/60 mb-6 backdrop-blur-sm"
+              transition={{ delay: index * 0.2 }}
+              className={`relative ${index === 1 ? 'md:-mt-8' : ''}`}
             >
+              {/* Card */}
               <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 rounded-full bg-[#3A8B50]"
-              />
-              <span className="text-sm font-medium bg-gradient-to-r from-[#3A8B50] to-[#2d6e3e] 
-                dark:from-green-400 dark:to-green-500 bg-clip-text text-transparent">
-                {lang === 'ar' ? 'خطط مرنة' : 'Flexible Plans'}
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
-                dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent"
-            >
-              {translations.pricing.title[lang]}
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
-            >
-              {translations.pricing.subtitle[lang]}
-            </motion.p>
-          </div>
-
-          {/* Pricing Cards Container */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {translations.pricing.plans.map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className={`relative ${index === 1 ? 'md:-mt-8' : ''}`}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className={`relative rounded-[2rem] p-8 overflow-hidden backdrop-blur-xl
+                  ${index === 1 
+                    ? 'bg-gradient-to-b from-[#3A8B50]/10 to-transparent border-[#3A8B50]/20' 
+                    : 'bg-white/60 dark:bg-gray-800/60 border-gray-200/50 dark:border-gray-700/50'
+                  } border-2`}
               >
-                {/* Card */}
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className={`relative rounded-[2rem] p-8 overflow-hidden backdrop-blur-xl
-                    ${index === 1 
-                      ? 'bg-gradient-to-b from-[#3A8B50]/10 to-transparent border-[#3A8B50]/20' 
-                      : 'bg-white/60 dark:bg-gray-800/60 border-gray-200/50 dark:border-gray-700/50'
-                    } border-2`}
-                >
-                  {/* Plan Content */}
-                  <div className="relative">
-                    {/* Plan Name & Price */}
-                    <div className="mb-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${
+                {/* Plan Content */}
+                <div className="relative">
+                  {/* Plan Name & Price */}
+                  <div className="mb-8">
+                    <h3 className={`text-2xl font-bold mb-4 ${
+                      index === 1 
+                        ? 'text-[#3A8B50] dark:text-green-400' 
+                        : 'text-gray-900 dark:text-white'
+                    }`}>
+                      {plan.name[lang]}
+                    </h3>
+                    <div className="flex items-baseline gap-2">
+                      <span className={`text-5xl font-bold ${
                         index === 1 
                           ? 'text-[#3A8B50] dark:text-green-400' 
                           : 'text-gray-900 dark:text-white'
                       }`}>
-                        {plan.name[lang]}
-                      </h3>
-                      <div className="flex items-baseline gap-2">
-                        <span className={`text-5xl font-bold ${
-                          index === 1 
-                            ? 'text-[#3A8B50] dark:text-green-400' 
-                            : 'text-gray-900 dark:text-white'
-                        }`}>
-                          {plan.price[lang]}
-                        </span>
-                        <span className="text-gray-500 dark:text-gray-400">
-                          {plan.currency[lang]}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Features List */}
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.4 + (i * 0.1) }}
-                          className="flex items-start gap-3"
-                        >
-                          <div className={`mt-1 w-5 h-5 rounded-full flex items-center justify-center 
-                            ${index === 1 
-                              ? 'bg-[#3A8B50]/10 text-[#3A8B50]' 
-                              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                            }`}
-                          >
-                            <Check className="w-3 h-3" />
-                          </div>
-                          <span className="text-gray-600 dark:text-gray-300">
-                            {feature[lang]}
-                          </span>
-                        </motion.li>
-                      ))}
-                    </ul>
-
-                    {/* CTA Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`group w-full py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300
-                        ${index === 1 
-                          ? 'bg-gradient-to-r from-[#3A8B50] to-[#2d6e3e] text-white shadow-lg hover:shadow-xl' 
-                          : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white'
-                        }`}
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        {index === 2 
-                          ? (lang === 'ar' ? 'تواصل معنا' : 'Contact Us')
-                          : (lang === 'ar' ? 'ابدأ الآن' : 'Get Started')}
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        {plan.price[lang]}
                       </span>
-                    </motion.button>
+                      <span className="text-gray-500 dark:text-gray-400">
+                        {plan.currency[lang]}
+                      </span>
+                    </div>
                   </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Bottom Section */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
-            {/* Money Back Guarantee */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 px-6 py-3 rounded-full 
-                bg-[#3A8B50]/5 dark:bg-gray-800/60 text-[#3A8B50] dark:text-green-400"
-            >
-              <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium">
-                {lang === 'ar' 
-                  ? 'ضمان استعادة الأموال لمدة ٣٠ يوماً' 
-                  : '30-Day Money-Back Guarantee'}
-              </span>
-            </motion.div>
-
-            {/* Support Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 px-6 py-3 rounded-full 
-                bg-[#3A8B50]/5 dark:bg-gray-800/60 text-[#3A8B50] dark:text-green-400"
-            >
-              <Phone className="w-5 h-5" />
-              <span className="text-sm font-medium">
-                {lang === 'ar' 
-                  ? 'دعم فني على مدار الساعة' 
-                  : '24/7 Technical Support'}
-              </span>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Footer */}
-      <footer className="relative pt-32 pb-12 overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-gray-100/90 dark:from-gray-900/50 dark:to-gray-800/90" />
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/80 dark:to-gray-900/80" />
-          {/* Animated Gradient Orbs */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3A8B50]/10 rounded-full blur-3xl animate-blob" />
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-green-200/10 dark:bg-green-900/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-            </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Pre-Footer CTA */}
-          <div className="relative mb-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-3xl overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#3A8B50]/90 to-[#2d6e3e]/90 backdrop-blur-xl" />
-              <div className="relative px-8 py-12 sm:px-12 sm:py-16 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-8">
-                <div className="max-w-xl">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                    {lang === 'ar' ? 'جاهز لتنمية أعمالك؟' : 'Ready to grow your business?'}
-                  </h2>
-                  <p className="text-white/80 text-lg">
-                    {lang === 'ar' 
-                      ? 'انضم إلى آلاف المزارعين الذين يستخدمون زراعة لتحسين إنتاجهم'
-                      : 'Join thousands of farmers using Zera3a to improve their yield'}
-                  </p>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 rounded-xl bg-white text-[#3A8B50] font-semibold text-lg
-                    hover:bg-gray-50 transition-all duration-200 flex items-center gap-2 group"
-                >
-                  {lang === 'ar' ? 'ابدأ الآن' : 'Get Started'}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 pb-16 border-b border-gray-200/30 dark:border-gray-700/30">
-            {/* Brand Column */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                <Image
-                  src="/logo.png"
-                  alt="Zera3a"
-                  width={140}
-                  height={40}
-                  className="dark:brightness-200"
-                />
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {lang === 'ar' 
-                    ? 'نساعد المزارعين على تحقيق أقصى استفادة من محاصيلهم من خلال التكنولوجيا المبتكرة'
-                    : 'Helping farmers maximize their crop value through innovative technology'}
-                </p>
-                {/* Social Links */}
-                <div className="flex gap-4">
-                  {[
-                    { icon: <Facebook className="w-5 h-5" />, color: "hover:bg-blue-500" },
-                    { icon: <Instagram className="w-5 h-5" />, color: "hover:bg-pink-500" },
-                    { icon: <Twitter className="w-5 h-5" />, color: "hover:bg-blue-400" }
-                  ].map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href="#"
-                      whileHover={{ y: -3 }}
-                      className={`w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center
-                        text-gray-600 dark:text-gray-400 ${social.color} hover:text-white transition-all duration-200`}
-                    >
-                      {social.icon}
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Quick Links */}
-            <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 gap-12">
-              {/* Contact Info */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  {translations.footer.contact.title[lang]}
-                </h3>
-                <ul className="space-y-4">
-                  <motion.li
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-3 text-gray-600 dark:text-gray-400"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-[#3A8B50]/10 dark:bg-gray-800 
-                      flex items-center justify-center text-[#3A8B50] dark:text-green-500"
-                    >
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    {translations.footer.contact.phone[lang]}
-                  </motion.li>
-                  <motion.li
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-3 text-gray-600 dark:text-gray-400"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-[#3A8B50]/10 dark:bg-gray-800 
-                      flex items-center justify-center text-[#3A8B50] dark:text-green-500"
-                    >
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    {translations.footer.contact.email[lang]}
-                  </motion.li>
-                </ul>
-              </motion.div>
-
-              {/* Links Column */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  {translations.footer.links.title[lang]}
-                </h3>
-                <ul className="space-y-4">
-                {translations.footer.links.items.map((link, index) => (
-                    <motion.li
-                      key={index}
-                      whileHover={{ x: 5 }}
-                    >
-                      <a href="#" className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 
-                        hover:text-[#3A8B50] dark:hover:text-green-500 transition-colors duration-200"
+                  {/* Features List */}
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((feature, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 + (i * 0.1) }}
+                        className="flex items-start gap-3"
                       >
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        {link[lang]}
-                      </a>
-                    </motion.li>
-                ))}
-              </ul>
-              </motion.div>
+                        <div className={`mt-1 w-5 h-5 rounded-full flex items-center justify-center 
+                          ${index === 1 
+                            ? 'bg-[#3A8B50]/10 text-[#3A8B50]' 
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                          }`}
+                        >
+                          <Check className="w-3 h-3" />
+                        </div>
+                        <span className="text-gray-600 dark:text-gray-300">
+                          {feature[lang]}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
 
-              {/* Newsletter Column */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                  {lang === 'ar' ? 'النشرة البريدية' : 'Newsletter'}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {lang === 'ar' 
-                    ? 'اشترك للحصول على آخر التحديثات'
-                    : 'Subscribe for latest updates'}
-                </p>
-                <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder={lang === 'ar' ? 'بريدك الإلكتروني' : 'Your email'}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
-                      focus:outline-none focus:ring-2 focus:ring-[#3A8B50]/20 dark:focus:ring-green-500/20"
-                  />
+                  {/* CTA Button */}
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-3 rounded-xl bg-[#3A8B50] text-white font-medium hover:bg-[#2d6e3e]
-                      transition-colors duration-200"
+                    className={`group w-full py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300
+                      ${index === 1 
+                        ? 'bg-gradient-to-r from-[#3A8B50] to-[#2d6e3e] text-white shadow-lg hover:shadow-xl' 
+                        : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white'
+                      }`}
                   >
-                    {lang === 'ar' ? 'اشترك' : 'Subscribe'}
+                    <span className="flex items-center justify-center gap-2">
+                      {index === 2 
+                        ? (lang === 'ar' ? 'تواصل معنا' : 'Contact Us')
+                        : (lang === 'ar' ? 'ابدأ الآن' : 'Get Started')}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </motion.button>
-            </div>
+                </div>
               </motion.div>
-              </div>
-            </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gray-600 dark:text-gray-400 text-sm"
-            >
-              {translations.footer.copyright[lang]}
-            </motion.p>
-            <div className="flex items-center gap-8">
-              {['Privacy', 'Terms', 'Cookies'].map((item, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#3A8B50] 
-                    dark:hover:text-green-500 transition-colors duration-200"
-                >
-                  {item}
-                </motion.a>
-              ))}
-          </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
-      </footer>
 
-      <VideoModal
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-      />
-    </div>
-  );
-}
+        {/* Bottom Section */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
+          {/* Money Back Guarantee */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 px-6 py-3 rounded-full 
+              bg-[#3A8B50]/5 dark:bg-gray-800/60 text-[#3A8B50] dark:text-green-400"
+          >
+            <Shield className="w-5 h-5" />
+            <span className="text-sm font-medium">
+              {lang === 'ar' 
+                ? 'ضمان استعادة الأموال لمدة ٣٠ يوماً' 
+                : '30-Day Money-Back Guarantee'}
+            </span>
+          </motion.div>
+
+          {/* Support Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 px-6 py-3 rounded-full 
+              bg-[#3A8B50]/5 dark:bg-gray-800/60 text-[#3A8B50] dark:text-green-400"
+          >
+            <Phone className="w-5 h-5" />
+            <span className="text-sm font-medium">
+              {lang === 'ar' 
+                ? 'دعم فني على مدار الساعة' 
+                : '24/7 Technical Support'}
+            </span>
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
+
+    {/* Footer */}
+    <footer className="relative pt-32 pb-12 overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-gray-100/90 dark:from-gray-900/50 dark:to-gray-800/90" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/80 dark:to-gray-900/80" />
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3A8B50]/10 rounded-full blur-3xl animate-blob" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-green-200/10 dark:bg-green-900/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Pre-Footer CTA */}
+        <div className="relative mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-3xl overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#3A8B50]/90 to-[#2d6e3e]/90 backdrop-blur-xl" />
+            <div className="relative px-8 py-12 sm:px-12 sm:py-16 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-8">
+              <div className="max-w-xl">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                  {lang === 'ar' ? 'جاهز لتنمية أعمالك؟' : 'Ready to grow your business?'}
+                </h2>
+                <p className="text-white/80 text-lg">
+                  {lang === 'ar' 
+                    ? 'انضم إلى آلاف المزارعين الذين يستخدمون زراعة لتحسين إنتاجهم'
+                    : 'Join thousands of farmers using Zera3a to improve their yield'}
+                </p>
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 rounded-xl bg-white text-[#3A8B50] font-semibold text-lg
+                  hover:bg-gray-50 transition-all duration-200 flex items-center gap-2 group"
+              >
+                {lang === 'ar' ? 'ابدأ الآن' : 'Get Started'}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 pb-16 border-b border-gray-200/30 dark:border-gray-700/30">
+          {/* Brand Column */}
+          <div className="lg:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <Image
+                src="/logo.png"
+                alt="Zera3a"
+                width={140}
+                height={40}
+                className="dark:brightness-200"
+              />
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {lang === 'ar' 
+                  ? 'نساعد المزارعين على تحقيق أقصى استفادة من محاصيلهم من خلال التكنولوجيا المبتكرة'
+                  : 'Helping farmers maximize their crop value through innovative technology'}
+              </p>
+              {/* Social Links */}
+              <div className="flex gap-4">
+                {[
+                  { icon: <Facebook className="w-5 h-5" />, color: "hover:bg-blue-500" },
+                  { icon: <Instagram className="w-5 h-5" />, color: "hover:bg-pink-500" },
+                  { icon: <Twitter className="w-5 h-5" />, color: "hover:bg-blue-400" }
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href="#"
+                    whileHover={{ y: -3 }}
+                    className={`w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center
+                      text-gray-600 dark:text-gray-400 ${social.color} hover:text-white transition-all duration-200`}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 gap-12">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+                {translations.footer.contact.title[lang]}
+              </h3>
+              <ul className="space-y-4">
+                <motion.li
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#3A8B50]/10 dark:bg-gray-800 
+                    flex items-center justify-center text-[#3A8B50] dark:text-green-500"
+                  >
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  {translations.footer.contact.phone[lang]}
+                </motion.li>
+                <motion.li
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#3A8B50]/10 dark:bg-gray-800 
+                    flex items-center justify-center text-[#3A8B50] dark:text-green-500"
+                  >
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  {translations.footer.contact.email[lang]}
+                </motion.li>
+              </ul>
+            </motion.div>
+
+            {/* Links Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+                {translations.footer.links.title[lang]}
+              </h3>
+              <ul className="space-y-4">
+              {translations.footer.links.items.map((link, index) => (
+                  <motion.li
+                    key={index}
+                    whileHover={{ x: 5 }}
+                  >
+                    <a href="#" className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 
+                      hover:text-[#3A8B50] dark:hover:text-green-500 transition-colors duration-200"
+                    >
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      {link[lang]}
+                    </a>
+                  </motion.li>
+              ))}
+            </ul>
+            </motion.div>
+
+            {/* Newsletter Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+                {lang === 'ar' ? 'النشرة البريدية' : 'Newsletter'}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                {lang === 'ar' 
+                  ? 'اشترك للحصول على آخر التحديثات'
+                  : 'Subscribe for latest updates'}
+              </p>
+              <div className="space-y-3">
+                <input
+                  type="email"
+                  placeholder={lang === 'ar' ? 'بريدك الإلكتروني' : 'Your email'}
+                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
+                    focus:outline-none focus:ring-2 focus:ring-[#3A8B50]/20 dark:focus:ring-green-500/20"
+                />
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 rounded-xl bg-[#3A8B50] text-white font-medium hover:bg-[#2d6e3e]
+                    transition-colors duration-200"
+                >
+                  {lang === 'ar' ? 'اشترك' : 'Subscribe'}
+                </motion.button>
+          </div>
+            </motion.div>
+            </div>
+          </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gray-600 dark:text-gray-400 text-sm"
+          >
+            {translations.footer.copyright[lang]}
+          </motion.p>
+          <div className="flex items-center gap-8">
+            {['Privacy', 'Terms', 'Cookies'].map((item, index) => (
+              <motion.a
+                key={index}
+                href="#"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#3A8B50] 
+                  dark:hover:text-green-500 transition-colors duration-200"
+              >
+                {item}
+              </motion.a>
+            ))}
+        </div>
+        </div>
+      </div>
+    </footer>
+
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
+  </div>
+);
+}  // Add missing closing brace here
