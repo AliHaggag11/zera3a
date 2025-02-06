@@ -272,7 +272,6 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
       if (!startTime.current) startTime.current = timestamp;
       const progress = timestamp - startTime.current;
       const percentage = Math.min(progress / duration, 1);
-      
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
       valueRef.current = Math.floor(easeOutQuart * targetValue);
 
@@ -297,7 +296,7 @@ const useAnimatedNumber = (targetValue: number, duration: number = 2000) => {
 // Add this new component
 const AnimatedNumber = ({ value, duration = 2000, formatter = (v) => v.toString() }: AnimatedNumberProps) => {
   const animatedValue = useAnimatedNumber(value, duration);
-  return <>{formatter(animatedValue)}</>;
+  return <span>{formatter(animatedValue)}</span>;
 };
 
 // Update the stats data

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { Leaf, ArrowLeft, Filter, Search, Calendar, MapPin, X, ChevronDown } from "lucide-react";
+import { Leaf, ArrowLeft, Filter, Search, Calendar, MapPin, X, ChevronDown, Check } from "lucide-react";
 import PriceCard from "@/components/PriceCard";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
